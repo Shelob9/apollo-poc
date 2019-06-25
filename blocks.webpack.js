@@ -5,5 +5,9 @@ module.exports = {
   entry: {
     blocks: path.resolve(process.cwd(), "blocks", "index.js")
     //front: path.resolve(process.cwd(), "src", "front.js")
+  },
+  output: {
+    filename: "[name].js",
+    path: path.resolve(process.cwd(), "blocks/build")
   }
 };

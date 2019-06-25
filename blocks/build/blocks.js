@@ -194,7 +194,7 @@ var save = function save(_ref4) {
 
 var name = "calderajs/message-block";
 var options = {
-  title: "Message block",
+  title: "Message block!",
   attributes: attributes,
   category: "common",
   edit: edit,

@@ -44,12 +44,13 @@ const save = ({ attributes, className }) => {
   const props = { message, className };
   return <Display {...props} />;
 };
+
 const name = "calderajs/message-block";
 const options = {
-  title: "Message block",
+  title: "Message block!",
   attributes,
   category: "common",
   edit,
   save
 };
-registerBlockType(name,options);
+registerBlockType(name, options);
