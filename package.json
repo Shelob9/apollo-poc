@@ -4,9 +4,14 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:blocks": "wp-scripts build --config blocks.webpack.js",
+    "start:blocks": "wp-scripts start --config blocks.webpack.js"
   },
   "dependencies": {
+    "@wordpress/block-editor": "^2.2.0",
+    "@wordpress/blocks": "^6.4.0",
+    "@wordpress/components": "^8.0.0",
     "apollo-boost": "^0.1.16",
     "graphql": "^14.0.2",
     "isomorphic-unfetch": "^3.0.0",
@@ -17,5 +22,9 @@
     "react-dom": "^16.8.6"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^3.3.0",
+    "webpack-cli": "^3.3.5"
+  }
 }
