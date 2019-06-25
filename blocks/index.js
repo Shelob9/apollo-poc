@@ -3,9 +3,9 @@ import { InspectorControls } from "@wordpress/block-editor";
 import { TextControl } from "@wordpress/components";
 import React, { Fragment } from "react";
 import ErrorMessage from "../Components/ErrorMessage";
-
+const block = require("./messageBlock.json");
 const Display = ({ message, className }) => {
-  return <ErrorMessage message={message} className={className} />;
+  return <ErrorMessage message={message} className={className + "message"} />;
 };
 
 const Editor = ({ message, onChange, className }) => {

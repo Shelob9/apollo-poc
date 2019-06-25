@@ -3,8 +3,8 @@ const path = require("path");
 module.exports = {
   ...defaultConfig,
   entry: {
-    blocks: path.resolve(process.cwd(), "blocks", "index.js")
-    //front: path.resolve(process.cwd(), "src", "front.js")
+    editor: path.resolve(process.cwd(), "blocks", "index.js"),
+    client: path.resolve(process.cwd(), "blocks", "client.js")
   },
   output: {
     filename: "[name].js",

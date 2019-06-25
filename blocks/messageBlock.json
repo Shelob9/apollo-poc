@@ -1,0 +1,21 @@
+{
+    "name": "calderajs/message",
+    "title": "Message",
+    "category": "common",
+    "icon": "star",
+    "description": "Shows warning, error or success notices  ...",
+    "keywords": [
+        "alert",
+        "message"
+    ],
+    "textDomain": "my-plugin",
+    "attributes": {
+        "message": {
+            "type": "string",
+            "source": "html",
+            "selector": ".message"
+        }
+    },
+    "editorScript": "build/editor.js",
+    "script": "build/client.js"
+}
