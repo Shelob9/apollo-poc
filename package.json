@@ -8,15 +8,9 @@
     "start:server": "nodemon server.js"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "latest",
-    "prop-types": "^15.6.2",
-    "react": "^16.8",
-    "react-apollo": "^2.1.11",
-    "react-dom": "^16.8",
     "@calderajs/builder": "^0.9.12-alpha.3",
     "@calderajs/components": "^0.9.12-alpha.3",
-    "@calderajs/forms": "^0.9.12-alpha.3",
+    "@calderajs/forms": "^0.9.12",
     "@wordpress/blocks": "^6.4.0",
     "@wordpress/editor": "^9.4.0",
     "@wordpress/server-side-render": "^1.0.0",
@@ -28,11 +22,17 @@
     "express": "4.17.1",
     "graphql": "^14.3.1",
     "graphql-schema-linter": "^0.2.0",
+    "isomorphic-unfetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mailchimp-api-v3": "^1.13.0",
     "mongodb": "^3.2.7",
     "mongoose": "5.6.0",
-    "re": "^0.1.4"
+    "next": "latest",
+    "prop-types": "^15.6.2",
+    "re": "^0.1.4",
+    "react": "^16.8",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.8"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
