@@ -3,7 +3,6 @@
  * Plugin name: The Blocks
  */
 
-
 /**
  * Load block
  */
@@ -14,7 +13,6 @@ add_action('init', function () {
         $block = new WP_Block_Type($name, []);
         $block->script = str_replace('/', '-', $name);
         $block->editor_script = str_replace('/', '-', $name) . '-editor';
-
         //Register script
         if (!empty($blockConfig['script'])) {
             //setting this prop, causes script to be enqueued with block
@@ -70,5 +68,6 @@ add_action('init', function () {
 
         register_block_type($block);
     };
+    
     $registerBlock(json_decode(file_get_contents(__DIR__ . '/messageBlock.json'), true));
 });
