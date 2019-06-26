@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./blocks/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./blocks/formBlock.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -107,10 +107,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./blocks/index.js":
-/*!*************************!*\
-  !*** ./blocks/index.js ***!
-  \*************************/
+/***/ "./blocks/formBlock.js":
+/*!*****************************!*\
+  !*** ./blocks/formBlock.js ***!
+  \*****************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -134,71 +134,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var block = __webpack_require__(/*! ./messageBlock.json */ "./blocks/messageBlock.json");
-
-var Display = function Display(_ref) {
-  var message = _ref.message,
-      className = _ref.className;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Components_ErrorMessage__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    message: message,
-    className: className + "message"
-  });
+var Editor = function Editor() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, "Hello");
 };
 
-var Editor = function Editor(_ref2) {
-  var message = _ref2.message,
-      onChange = _ref2.onChange,
-      className = _ref2.className;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
-    label: "Change Message",
-    onChange: onChange,
-    value: message,
-    className: className
-  });
+var edit = function edit() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Editor, null);
 };
 
-var attributes = {
-  message: {
-    type: "string"
-  }
+var save = function save() {
+  return null;
 };
 
-var edit = function edit(_ref3) {
-  var attributes = _ref3.attributes,
-      className = _ref3.className,
-      setAttributes = _ref3.setAttributes;
-  var message = attributes.message;
+var blockConfig = __webpack_require__(/*! ./formBlock.json */ "./blocks/formBlock.json");
 
-  var onChange = function onChange(message) {
-    return setAttributes({
-      message: message
-    });
-  };
-
-  var props = {
-    onChange: onChange,
-    message: message,
-    className: className
-  };
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_4__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Editor, props)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Display, props));
-};
-
-var save = function save(_ref4) {
-  var attributes = _ref4.attributes,
-      className = _ref4.className;
-  var message = attributes.message;
-  var props = {
-    message: message,
-    className: className
-  };
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Display, props);
-};
-
-var name = "calderajs/message-block";
+var title = blockConfig.title,
+    keywords = blockConfig.keywords,
+    description = blockConfig.description,
+    icon = blockConfig.icon,
+    category = blockConfig.category,
+    name = blockConfig.name,
+    attributes = blockConfig.attributes;
 var options = {
-  title: "Message block!",
+  title: title,
+  keywords: keywords,
+  description: description,
+  icon: icon,
+  category: category,
   attributes: attributes,
-  category: "common",
   edit: edit,
   save: save
 };
@@ -206,14 +169,14 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])(name
 
 /***/ }),
 
-/***/ "./blocks/messageBlock.json":
-/*!**********************************!*\
-  !*** ./blocks/messageBlock.json ***!
-  \**********************************/
+/***/ "./blocks/formBlock.json":
+/*!*******************************!*\
+  !*** ./blocks/formBlock.json ***!
+  \*******************************/
 /*! exports provided: name, title, category, icon, description, keywords, textDomain, attributes, editorScript, script, default */
 /***/ (function(module) {
 
-module.exports = {"name":"calderajs/message","title":"Message","category":"common","icon":"star","description":"Shows warning, error or success notices  ...","keywords":["alert","message"],"textDomain":"my-plugin","attributes":{"message":{"type":"string","source":"html","selector":".message"}},"editorScript":"build/editor.js","script":"build/client.js"};
+module.exports = {"name":"calderajs/form","title":"Form Block","category":"common","icon":"feedback","description":"Shows warning, error or success notices  ...","keywords":["alert","message"],"textDomain":"my-plugin","attributes":{"formId":{"type":"string"}},"editorScript":"build/form-editor.js","script":"build/form-client.js"};
 
 /***/ }),
 
@@ -273,4 +236,4 @@ module.exports = {"name":"calderajs/message","title":"Message","category":"commo
 /***/ })
 
 /******/ });
-//# sourceMappingURL=editor.js.map
+//# sourceMappingURL=form-editor.js.map

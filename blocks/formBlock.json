@@ -1,0 +1,19 @@
+{
+    "name": "calderajs/form",
+    "title": "Form Block",
+    "category": "common",
+    "icon": "feedback",
+    "description": "Shows warning, error or success notices  ...",
+    "keywords": [
+        "alert",
+        "message"
+    ],
+    "textDomain": "my-plugin",
+    "attributes": {
+        "formId": {
+            "type": "string"
+        }
+    },
+    "editorScript": "build/form-editor.js",
+    "script": "build/form-client.js"
+}

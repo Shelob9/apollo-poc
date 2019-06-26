@@ -68,6 +68,6 @@ add_action('init', function () {
 
         register_block_type($block);
     };
-    
+    $registerBlock(json_decode(file_get_contents(__DIR__ . '/formBlock.json'), true));
     $registerBlock(json_decode(file_get_contents(__DIR__ . '/messageBlock.json'), true));
 });

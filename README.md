@@ -2,12 +2,20 @@
 
 Words
 
-## USage
+## Usage
 
+* Develop UI Client
+  * `yarn dev`
+* Build UI Client for production
+  * `yarn build:app`
 * Start GraphQL server
   * `yarn start:server`
 * Start WordPress
   * `docker-compose up -d`
+* Develop Blocks
+  * `yarn start:block`
+* Build blocks for production
+  * `yarn build:blocks`
 
 ## Overivew
 
