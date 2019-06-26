@@ -1,5 +1,5 @@
-export default ({ message, className }) => (
-  <aside className={className}>
+export default ({ message }) => (
+  <aside>
     {message}
     <style jsx>{`
       aside {
@@ -10,4 +10,4 @@ export default ({ message, className }) => (
       }
     `}</style>
   </aside>
-);
+)
