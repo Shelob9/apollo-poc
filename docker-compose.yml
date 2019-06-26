@@ -4,7 +4,7 @@ services:
   good_apollo_wordpress:
     image: wordpress
     ports:
-      - 8444:80
+      - 5100:80
     environment:
       WORDPRESS_DB_PASSWORD: example
       WORDPRESS_DEBUG: 1

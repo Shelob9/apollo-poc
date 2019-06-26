@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "start:server": "nodemon server.js"
   },
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
@@ -33,6 +34,9 @@
     "mongoose": "5.6.0",
     "re": "^0.1.4"
   },
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "1.18.4",
+    "prettier": "^1.18.2"
+  }
 }
