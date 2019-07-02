@@ -4,8 +4,12 @@ Words
 
 ## Usage
 
-* Develop UI Client
+* Start GraphQl erver and UI client for development
   * `yarn dev`
+* Start WordPress site and block watcher
+  * `yarn dev:wp`
+* Develop UI Client
+  * `yarn start:client`
 * Build UI Client for production
   * `yarn build:app`
 * Start GraphQL server
