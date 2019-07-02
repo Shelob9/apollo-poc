@@ -21,7 +21,7 @@ const GET_ENTRY = gql`
 	}
 `;
 
-export default function Single({
+export default function SingleEntry({
 	entryId,
 	loadingIndicator,
 	errorDisplay,
@@ -49,7 +49,7 @@ export default function Single({
 	);
 }
 
-Single.defaultProps = {
+SingleEntry.defaultProps = {
 	loadingIndicator: () => {
 		return <p>Loading...</p>;
 	},

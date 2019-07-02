@@ -1,12 +1,12 @@
-import List from './List';
+import FormList from './FormList';
 import Single from './Single';
 import Preview from './Preview';
 import Submittable from './Submittable';
 
 import EditablePreview from './EditablePreview';
+
 module.exports = {
-	
-	FormList: List,
+	FormList: FormList,
 	Form: Single,
 	FormPreview: Preview,
 	FormEditablePreview: EditablePreview,

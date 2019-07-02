@@ -1,1 +1,1 @@
-["react","wp-block-editor","wp-blocks","wp-components","wp-element","wp-polyfill"]
+["react","react-dom","wp-block-editor","wp-blocks","wp-components","wp-element","wp-hooks","wp-polyfill"]

@@ -1,8 +1,9 @@
 import React, { createElement } from 'react';
 import Preview from './Preview';
 import Single from './Single';
-import { CreateEntry, SingleEntry } from '../Entry';
-export default function Submittable({ formId, renderEntry,className }) {
+import SingleEntry from '../Entry/SingleEntry';
+import CreateEntry from '../Entry/CreateEntry';
+export default function Submittable({ formId, renderEntry, className }) {
 	return (
 		<Single
 			formId={formId}
@@ -12,7 +13,13 @@ export default function Submittable({ formId, renderEntry,className }) {
 						form={form}
 						formId={form._id}
 						render={({ onSubmit }) => {
-							return <Preview form={form} onSubmit={onSubmit} className={className} />;
+							return (
+								<Preview
+									form={form}
+									onSubmit={onSubmit}
+									className={className}
+								/>
+							);
 						}}
 						success={({ entryId }) => {
 							return (

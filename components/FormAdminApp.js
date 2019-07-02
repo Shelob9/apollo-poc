@@ -1,11 +1,55 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Form, FormPreview, FormList, FormEditablePreview } from './Forms';
+import { Form, FormList, FormPreview, FormEditablePreview } from './Forms';
 import { ListEntries } from './Entry';
 import { Row, Column, SelectField } from '@calderajs/components';
 import { CurrentFormContext, CurrentFormProvider } from './CurrentForm';
-import { FormsList, FormEntryViewer } from '@calderajs/builder';
 import ErrorBoundary from './ErrorBoundary';
+import { FormsList, FormEntryViewer } from '@calderajs/builder';
+
 import { SimpleFormChooser } from './SimpleFormChooser';
+
+const TheEntryViewer = () => {
+	const { currentFormId } = useContext(CurrentFormContext);
+
+	return (
+		<Form
+			formId={currentFormId}
+			render={({ form }) => {
+				/** This is a hack to format entry values */
+				const [theForm, setTheForm] = useState(form);
+				useEffect(() => {
+					const fields = form.fields.length
+						? form.fields.map((field) => {
+								return {
+									...field,
+									id: field._id,
+								};
+						  })
+						: [];
+					setTheForm({
+						...form,
+						fields,
+					});
+				}, [form, setTheForm]);
+				return (
+					<ListEntries
+						formId={form._id}
+						form={theForm}
+						render={({ form, entries }) => {
+							return (
+								<FormEntryViewer
+									form={form}
+									entries={entries}
+								/>
+							);
+						}}
+					/>
+				);
+			}}
+		/>
+	);
+};
+
 const FieldEditor = ({ fieldId, formId, onChange }) => {
 	return (
 		<div>
@@ -20,7 +64,6 @@ const FieldEditor = ({ fieldId, formId, onChange }) => {
 };
 
 const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
-	
 	const { currentFormId, setCurrentFormId } = useContext(CurrentFormContext);
 	const onCloseForm = () => {
 		setCurrentFormId('');
@@ -62,6 +105,7 @@ const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
 									};
 							  })
 							: [];
+						console.log(__forms);
 						setTheForms(__forms);
 					}, [forms, setTheForms]);
 
@@ -107,48 +151,6 @@ const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
 				}}
 			/>
 		</div>
-	);
-};
-
-const TheEntryViewer = () => {
-	const { currentFormId } = useContext(CurrentFormContext);
-
-	return (
-		<Form
-			formId={currentFormId}
-			render={({ form }) => {
-				/** This is a hack to format entry values */
-				const [theForm, setTheForm] = useState(form);
-				useEffect(() => {
-					const fields = form.fields.length
-						? form.fields.map((field) => {
-								return {
-									...field,
-									id: field._id,
-								};
-						  })
-						: [];
-					setTheForm({
-						...form,
-						fields,
-					});
-				}, [form, setTheForm]);
-				return (
-					<ListEntries
-						formId={form._id}
-						form={theForm}
-						render={({ form, entries }) => {
-							return (
-								<FormEntryViewer
-									form={form}
-									entries={entries}
-								/>
-							);
-						}}
-					/>
-				);
-			}}
-		/>
 	);
 };
 /**
@@ -214,7 +216,6 @@ const Preview = ({ entryViewerForm, forms }) => {
 		</ErrorBoundary>
 	);
 };
-
 /**
  * Responsible for controlling layout of form admin app
  */
@@ -224,9 +225,11 @@ const Layout = (props) => {
 
 	return (
 		<Row>
-			<Column width={currentFormId ? 0.75 : 0.1}>
-				<Preview {...props} entryViewerForm={entryViewerForm} />
-			</Column>
+			{currentFormId && (
+				<Column width={currentFormId ? 0.75 : 0.1}>
+					<Preview {...props} entryViewerForm={entryViewerForm} />
+				</Column>
+			)}
 			<Column width={currentFormId ? 0.25 : 0.9}>
 				<Editor {...props} setEntryViewerForm={setEntryViewerForm} />
 			</Column>
@@ -236,7 +239,9 @@ const Layout = (props) => {
 export default function FormsAdminApp() {
 	return (
 		<CurrentFormProvider>
-			<Layout />
+			<ErrorBoundary>
+				<Layout />
+			</ErrorBoundary>
 		</CurrentFormProvider>
 	);
 }

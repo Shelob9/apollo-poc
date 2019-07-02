@@ -1,14 +1,31 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
+import { Placeholder } from '@wordpress/components';
 import React, { Fragment } from 'react';
-import ErrorMessage from '../Components/ErrorMessage';
+import { SimpleFormChooser } from '../Components/SimpleFormChooser';
+import Preview from '../Components/Forms/Submittable';
+import { CalderaQLProvider } from './CalderaQLProvider';
 
-const Editor = () => {
-	return <div>Hello</div>;
+const Editor = ({ attributes, setAttributes, className }) => {
+	const { formId } = attributes;
+	const onChange = (formId) => setAttributes({ formId });
+	const props = { formId, onChange };
+	return (
+		<Fragment>
+			<InspectorControls>
+				<CalderaQLProvider>
+					<SimpleFormChooser {...props} />
+				</CalderaQLProvider>
+			</InspectorControls>
+			<CalderaQLProvider>
+				<SimpleFormChooser {...props} />
+			</CalderaQLProvider>
+		</Fragment>
+	);
 };
-const edit = () => {
-	return <Editor />;
+
+const edit = (props) => {
+	return <Editor {...props} />;
 };
 const save = () => {
 	return null;

@@ -1,11 +1,13 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { FormList } from './Forms';
+import FormList from './Forms/FormList';
 import { SelectField } from '@calderajs/components';
 export const SimpleFormChooser = ({ formId, onChange }) => {
 	return (
 		<FormList
 			render={(forms) => {
-				console.log(forms);
+				if (forms.hasOwnProperty('forms')) {
+					forms = forms.forms;
+				}
 				return (
 					<SelectField
 						fieldId="choose--"

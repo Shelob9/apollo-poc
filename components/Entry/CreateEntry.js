@@ -1,7 +1,6 @@
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import React, { createElement } from 'react';
-import * as Forms from '../Forms';
 const SUBMIT_FORM = gql`
 	mutation SubmitForm($formId: String!, $entryValues: [EntryValueInput]) {
 		newEntry(formId: $formId, entryValues: $entryValues) {
@@ -13,7 +12,7 @@ const SUBMIT_FORM = gql`
 	}
 `;
 
-export default function Create({ render, formId, success, form }) {
+export default function CreateEntry({ render, formId, success, form }) {
 	return (
 		<Mutation mutation={SUBMIT_FORM}>
 			{(newEntry, { data, called }) => {
@@ -58,7 +57,7 @@ export default function Create({ render, formId, success, form }) {
 	);
 }
 
-Create.defaultProps = {
+CreateEntry.defaultProps = {
 	success: ({ entryId }) => {
 		return <div>New Entry Created {entryId} </div>;
 	},

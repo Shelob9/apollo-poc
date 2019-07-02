@@ -1,9 +1,9 @@
-import Create from './Create';
-import Single from './Single';
-import List from './List';
+import CreateEntry from './CreateEntry';
+import SingleEntry from './SingleEntry';
+import ListEntries from './ListEntries';
 
 module.exports = {
-	CreateEntry: Create,
-	SingleEntry: Single,
-	ListEntries: List,
+	CreateEntry: CreateEntry,
+	SingleEntry: SingleEntry,
+	ListEntries: ListEntries,
 };

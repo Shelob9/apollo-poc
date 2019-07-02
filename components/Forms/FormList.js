@@ -1,7 +1,7 @@
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import React, { createElement } from 'react';
-export default function List({ loadingIndicator, errorDisplay, render }) {
+export default function FormList({ loadingIndicator, errorDisplay, render }) {
 	return (
 		<Query
 			query={gql`
@@ -32,7 +32,7 @@ export default function List({ loadingIndicator, errorDisplay, render }) {
 	);
 }
 
-List.defaultProps = {
+FormList.defaultProps = {
 	loadingIndicator: () => {
 		return <p>Loading...</p>;
 	},

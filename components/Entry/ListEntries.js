@@ -22,7 +22,7 @@ const GET_ALL_ENTRIES_FOR_FORM = gql`
 	}
 `;
 
-export default function List({
+export default function ListEntries({
 	loadingIndicator,
 	errorDisplay,
 	notFoundDisplay,
@@ -76,7 +76,7 @@ export default function List({
 	);
 }
 
-List.defaultProps = {
+ListEntries.defaultProps = {
 	loadingIndicator: () => {
 		return <p>Loading...</p>;
 	},
