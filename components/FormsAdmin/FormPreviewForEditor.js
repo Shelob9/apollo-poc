@@ -1,4 +1,10 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, {
+	Fragment,
+	useContext,
+	useEffect,
+	useState,
+	useRef,
+} from 'react';
 import { Form, FormList, FormPreview, FormEditablePreview } from '../Forms';
 import { ListEntries } from '../Entry';
 import { Row, Column, SelectField } from '@calderajs/components';
@@ -43,6 +49,7 @@ export const FormPreviewForEditor = ({ entryViewerForm, forms }) => {
 					 * Paper over inconsitencies in API for entries.
 					 */
 					const [theEntry, setTheEntry] = useState(entry);
+					const entryPrepared = useRef(false);
 					useEffect(() => {
 						let entryValues = {};
 						const entryId = entry._id;
@@ -63,10 +70,14 @@ export const FormPreviewForEditor = ({ entryViewerForm, forms }) => {
 							id: entryId,
 							entryValues,
 						});
+						entryPrepared.current = true;
 					}, [entry, setTheEntry]);
 
 					if (!theEntry.hasOwnProperty('entryValues')) {
-						return <div>Can not display entry</div>;
+						if (true === entryPrepared.current) {
+							return <div>Can not display entry</div>;
+						}
+						return <Fragment />;
 					}
 					return (
 						<div>
