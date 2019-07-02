@@ -473,7 +473,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n\tquery GET_THE_FORM($formId: String!) {\n\t\tgetForm(ID: $formId) {\n\t\t\t_id\n\t\t\tname\n\t\t\tID\n\t\t\tfields {\n\t\t\t\t_id\n\t\t\t\tfieldType\n\t\t\t\tlabel\n\t\t\t}\n\t\t\tconditionals {\n\t\t\t\t_id\n\t\t\t\tname\n\t\t\t\tgroup {\n\t\t\t\t\t_id\n\t\t\t\t}\n\t\t\t\tform {\n\t\t\t\t\tfields {\n\t\t\t\t\t\t_id\n\t\t\t\t\t\tfieldType\n\t\t\t\t\t\tlabel\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tprocessors {\n\t\t\t\t_id\n\t\t\t\ttype\n\t\t\t\ttypeLabel\n\t\t\t\tlabel\n\t\t\t}\n\t\t}\n\t}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n\tquery GET_THE_FORM($formId: ID!) {\n\t\tgetForm(_id: $formId) {\n\t\t\t_id\n\t\t\tname\n\t\t\tID\n\t\t\tfields {\n\t\t\t\t_id\n\t\t\t\tfieldType\n\t\t\t\tlabel\n\t\t\t}\n\t\t\tconditionals {\n\t\t\t\t_id\n\t\t\t\tname\n\t\t\t\tgroup {\n\t\t\t\t\t_id\n\t\t\t\t}\n\t\t\t\tform {\n\t\t\t\t\tfields {\n\t\t\t\t\t\t_id\n\t\t\t\t\t\tfieldType\n\t\t\t\t\t\tlabel\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tprocessors {\n\t\t\t\t_id\n\t\t\t\ttype\n\t\t\t\ttypeLabel\n\t\t\t\tlabel\n\t\t\t}\n\t\t}\n\t}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -574,6 +574,7 @@ function Submittable(_ref) {
     formId: formId,
     render: function render(_ref2) {
       var form = _ref2.form;
+      console.log(formId, form);
       return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Entry_CreateEntry__WEBPACK_IMPORTED_MODULE_4__["default"], {
         form: form,
         formId: form._id,
@@ -724,7 +725,10 @@ var Editor = function Editor(_ref) {
     formId: formId,
     onChange: onChange
   };
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_4__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_CalderaQLProvider__WEBPACK_IMPORTED_MODULE_7__["CalderaQLProvider"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Components_SimpleFormChooser__WEBPACK_IMPORTED_MODULE_5__["SimpleFormChooser"], props))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_CalderaQLProvider__WEBPACK_IMPORTED_MODULE_7__["CalderaQLProvider"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Components_SimpleFormChooser__WEBPACK_IMPORTED_MODULE_5__["SimpleFormChooser"], props)));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_4__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_CalderaQLProvider__WEBPACK_IMPORTED_MODULE_7__["CalderaQLProvider"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Components_SimpleFormChooser__WEBPACK_IMPORTED_MODULE_5__["SimpleFormChooser"], props))), 'string' !== typeof formId ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_CalderaQLProvider__WEBPACK_IMPORTED_MODULE_7__["CalderaQLProvider"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Components_SimpleFormChooser__WEBPACK_IMPORTED_MODULE_5__["SimpleFormChooser"], props)) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_CalderaQLProvider__WEBPACK_IMPORTED_MODULE_7__["CalderaQLProvider"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Components_Forms_Submittable__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    formId: formId,
+    className: className
+  })));
 };
 
 var edit = function edit(props) {
@@ -10663,7 +10667,7 @@ function previouslyCompared(a, b) {
 /*!*****************************************************!*\
   !*** ./node_modules/apollo-boost/lib/bundle.esm.js ***!
   \*****************************************************/
-/*! exports provided: HttpLink, gql, default, ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument */
+/*! exports provided: ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument, HttpLink, gql, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

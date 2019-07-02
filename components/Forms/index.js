@@ -5,10 +5,8 @@ import Submittable from './Submittable';
 
 import EditablePreview from './EditablePreview';
 
-module.exports = {
-	FormList: FormList,
-	Form: Single,
-	FormPreview: Preview,
-	FormEditablePreview: EditablePreview,
-	SubmittableForm: Submittable,
-};
+const Form = Single;
+const FormPreview = Preview;
+const FormEditablePreview = EditablePreview;
+const SubmittableForm = Submittable;
+export { FormList, Form, FormPreview, FormEditablePreview, SubmittableForm };

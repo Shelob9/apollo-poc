@@ -66,7 +66,7 @@ const FormEntryValue = mongoose.model(ENTRY_VALUE, FormEntryValueSchema);
  */
 async function addFieldsToForm(form) {
 	const fields = await FieldModel.find({ form: form._id });
-	form.fields = fields ? fields : [];
+	form.fields = Array.isArray(fields) ? fields : [];
 	return form;
 }
 
@@ -129,7 +129,7 @@ module.exports = {
 		return FormModel.deleteMany({});
 	},
 	findForm: async (_id) => {
-		let form = await FormModel.findOne({ ID });
+		let form = await FormModel.findOne({ _id });
 		form = await populateForm(form);
 		return form;
 	},
@@ -258,7 +258,7 @@ module.exports = {
 								values: [...entry.values, value],
 							};
 						})
-						.catch((e) => console.log(112111111, e));
+						.catch((e) => console.log(e));
 					saved.then((r) => console.log(r));
 					return entry;
 				} catch (e) {
@@ -276,7 +276,6 @@ module.exports = {
 		try {
 			const entriesValues = FormEntryValue.find({ entry: entryId }).then(
 				(entries) => {
-					console.log(1, entries);
 					return entries;
 				},
 			);
@@ -300,7 +299,6 @@ module.exports = {
 						entryValue.entry = entry;
 						return entryValue;
 					});
-					console.log(entryValues);
 					return entryValues;
 				},
 			);

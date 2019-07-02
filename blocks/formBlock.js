@@ -3,13 +3,14 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { Placeholder } from '@wordpress/components';
 import React, { Fragment } from 'react';
 import { SimpleFormChooser } from '../Components/SimpleFormChooser';
-import Preview from '../Components/Forms/Submittable';
+import Submittable from '../Components/Forms/Submittable';
 import { CalderaQLProvider } from './CalderaQLProvider';
 
 const Editor = ({ attributes, setAttributes, className }) => {
 	const { formId } = attributes;
 	const onChange = (formId) => setAttributes({ formId });
 	const props = { formId, onChange };
+
 	return (
 		<Fragment>
 			<InspectorControls>
@@ -17,9 +18,15 @@ const Editor = ({ attributes, setAttributes, className }) => {
 					<SimpleFormChooser {...props} />
 				</CalderaQLProvider>
 			</InspectorControls>
-			<CalderaQLProvider>
-				<SimpleFormChooser {...props} />
-			</CalderaQLProvider>
+			{'string' !== typeof formId ? (
+				<CalderaQLProvider>
+					<SimpleFormChooser {...props} />
+				</CalderaQLProvider>
+			) : (
+				<CalderaQLProvider>
+					<Submittable formId={formId} className={className} />
+				</CalderaQLProvider>
+			)}
 		</Fragment>
 	);
 };

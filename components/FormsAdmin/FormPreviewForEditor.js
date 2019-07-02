@@ -5,19 +5,18 @@ import React, {
 	useState,
 	useRef,
 } from 'react';
-import { Form, FormList, FormPreview, FormEditablePreview } from '../Forms';
+import { Form, FormList, FormPreview } from '../Forms';
+import EditablePreview from '../Forms/EditablePreview';
 import { ListEntries } from '../Entry';
 import { Row, Column, SelectField } from '@calderajs/components';
 import { CurrentFormContext, CurrentFormProvider } from '../CurrentForm';
 import ErrorBoundary from '../ErrorBoundary';
 import { FormsList, FormEntryViewer } from '@calderajs/builder';
 import { SimpleFormChooser } from '../SimpleFormChooser';
-/**
- * Preview a form during editting
- */
-export const FormPreviewForEditor = ({ entryViewerForm, forms }) => {
-	const { currentFormId } = useContext(CurrentFormContext);
+import FormEditablePreview from '../Forms/EditablePreview';
+import { TheEntryViewer } from './TheEntryViewer';
 
+export const PreviewWithEntryViewer = ({ entryViewerForm, currentFormId }) => {
 	if (entryViewerForm) {
 		return <TheEntryViewer />;
 	}
@@ -91,5 +90,15 @@ export const FormPreviewForEditor = ({ entryViewerForm, forms }) => {
 				}}
 			/>
 		</ErrorBoundary>
+	);
+};
+
+export const FormPreviewForEditor = ({ entryViewerForm }) => {
+	const { currentFormId } = useContext(CurrentFormContext);
+	return (
+		<PreviewWithEntryViewer
+			currentFormId={currentFormId}
+			entryViewerForm={entryViewerForm}
+		/>
 	);
 };

@@ -3,8 +3,8 @@ import { gql } from 'apollo-boost';
 import React, { createElement } from 'react';
 
 const GET_FORM = gql`
-	query GET_THE_FORM($formId: String!) {
-		getForm(ID: $formId) {
+	query GET_THE_FORM($formId: ID!) {
+		getForm(_id: $formId) {
 			_id
 			name
 			ID

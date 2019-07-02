@@ -299,7 +299,7 @@ const resolvers = {
 		forms() {
 			return FormModel.all().then((forms) => {
 				return forms.map(async (form) => {
-					form.fields = await FormModel.populateForm(form);
+					form = await FormModel.populateForm(form);
 					return form;
 				});
 			});

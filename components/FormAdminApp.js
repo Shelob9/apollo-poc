@@ -8,55 +8,12 @@ import { FormsList, FormEntryViewer } from '@calderajs/builder';
 import { FormPreviewForEditor } from './FormsAdmin/FormPreviewForEditor';
 import { SimpleFormChooser } from './SimpleFormChooser';
 
-const TheEntryViewer = () => {
-	const { currentFormId } = useContext(CurrentFormContext);
-
-	return (
-		<Form
-			formId={currentFormId}
-			render={({ form }) => {
-				/** This is a hack to format entry values */
-				const [theForm, setTheForm] = useState(form);
-				useEffect(() => {
-					const fields = form.fields.length
-						? form.fields.map((field) => {
-								return {
-									...field,
-									id: field._id,
-								};
-						  })
-						: [];
-					setTheForm({
-						...form,
-						fields,
-					});
-				}, [form, setTheForm]);
-				return (
-					<ListEntries
-						formId={form._id}
-						form={theForm}
-						render={({ form, entries }) => {
-							return (
-								<FormEntryViewer
-									form={form}
-									entries={entries}
-								/>
-							);
-						}}
-					/>
-				);
-			}}
-		/>
-	);
-};
-
 const FieldEditor = ({ fieldId, formId, onChange }) => {
 	return (
 		<div>
-			<p>fieldId</p>
+			<h2>Field Editor</h2>
 
 			<p>{fieldId}</p>
-			<p>formId</p>
 
 			<p>{formId}</p>
 		</div>
@@ -64,6 +21,7 @@ const FieldEditor = ({ fieldId, formId, onChange }) => {
 };
 
 const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
+	console.log(entryViewerForm);
 	const { currentFormId, setCurrentFormId } = useContext(CurrentFormContext);
 	const onCloseForm = () => {
 		setCurrentFormId('');
@@ -101,11 +59,10 @@ const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
 									return {
 										...form,
 										formID,
-										id: formID,
+										id: form._id,
 									};
 							  })
 							: [];
-						console.log(__forms);
 						setTheForms(__forms);
 					}, [forms, setTheForms]);
 
@@ -138,7 +95,7 @@ const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
 											formId = _form._id;
 										}
 										setEntryViewerForm(formId);
-										setCurrentFormId(_form.ID);
+										setCurrentFormId(formId);
 										break;
 									case 'edit':
 									default:
