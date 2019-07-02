@@ -5,7 +5,7 @@ import { Row, Column, SelectField } from '@calderajs/components';
 import { CurrentFormContext, CurrentFormProvider } from './CurrentForm';
 import ErrorBoundary from './ErrorBoundary';
 import { FormsList, FormEntryViewer } from '@calderajs/builder';
-
+import { FormPreviewForEditor } from './FormsAdmin/FormPreviewForEditor';
 import { SimpleFormChooser } from './SimpleFormChooser';
 
 const TheEntryViewer = () => {
@@ -156,66 +156,7 @@ const Editor = ({ entryViewerForm, setEntryViewerForm }) => {
 /**
  * Preview a form during editting
  */
-const Preview = ({ entryViewerForm, forms }) => {
-	const { currentFormId } = useContext(CurrentFormContext);
-
-	if (entryViewerForm) {
-		return <TheEntryViewer />;
-	}
-	if (!currentFormId) {
-		return <Fragment />;
-	}
-
-	return (
-		<ErrorBoundary>
-			<FormEditablePreview
-				formId={currentFormId}
-				renderEntry={({ form, entry }) => {
-					const [theForm, setTheForm] = useState({ form });
-					const [theEntry, setTheEntry] = useState(entry);
-					useEffect(() => {
-						const fields = form.fields.length
-							? form.fields.map((field) => {
-									return {
-										...field,
-										id: field._id,
-									};
-							  })
-							: [];
-					}, [form, setTheForm]);
-
-					useEffect(() => {
-						let entryValues = {};
-						const entryId = entry._id;
-						entry.values.forEach((value) => {
-							const fieldId = value.field._id;
-							const entryValueId = value._id;
-							entryValues[entryValueId] = {
-								fieldId,
-								formId: currentFormId,
-								slug: fieldId,
-								entryId,
-								id: entryValueId,
-								value: value.value,
-							};
-						});
-						setTheEntry({
-							...entry,
-							id: entryId,
-							entryValues,
-						});
-					}, [entry, setTheEntry]);
-					if (!entry.hasOwnProperty('entryValues')) {
-						return <div>204</div>;
-					}
-					return (
-						<FormEntryViewer form={theForm} entries={[theEntry]} />
-					);
-				}}
-			/>
-		</ErrorBoundary>
-	);
-};
+const Preview = FormPreviewForEditor;
 /**
  * Responsible for controlling layout of form admin app
  */
