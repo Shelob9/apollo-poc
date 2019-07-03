@@ -11,7 +11,10 @@
     "textDomain": "my-plugin",
     "attributes": {
         "formId": {
-            "type": "string"
+            "type": "string",
+            "source": "attribute",
+            "selector": ".cf-gp",
+            "attribute": "data-form"
         }
     },
     "editorScript": "build/form-editor.js",

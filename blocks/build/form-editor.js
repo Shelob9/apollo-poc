@@ -490,7 +490,8 @@ function Single(_ref) {
   var formId = _ref.formId,
       loadingIndicator = _ref.loadingIndicator,
       errorDisplay = _ref.errorDisplay,
-      render = _ref.render;
+      render = _ref.render,
+      notFoundDisplay = _ref.notFoundDisplay;
   return Object(react__WEBPACK_IMPORTED_MODULE_3__["createElement"])(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Query"], {
     query: GET_FORM,
     variables: {
@@ -530,7 +531,7 @@ Single.defaultProps = {
     return Object(react__WEBPACK_IMPORTED_MODULE_3__["createElement"])("p", null, "Error :( ");
   },
   notFoundDisplay: function notFoundDisplay() {
-    return Object(react__WEBPACK_IMPORTED_MODULE_3__["createElement"])("p", null, "No Forms Found");
+    return Object(react__WEBPACK_IMPORTED_MODULE_3__["createElement"])("p", null, "Form Not Found");
   },
   render: function render(_ref4) {
     var form = _ref4.form;
@@ -735,8 +736,16 @@ var edit = function edit(props) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Editor, props);
 };
 
-var save = function save() {
-  return null;
+var save = function save(_ref2) {
+  var attributes = _ref2.attributes,
+      className = _ref2.className;
+  var formId = attributes.formId;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    "data-form": formId,
+    className: 'cf-gp'
+  }));
 };
 
 var blockConfig = __webpack_require__(/*! ./formBlock.json */ "./blocks/formBlock.json");
@@ -769,7 +778,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])(name
 /*! exports provided: name, title, category, icon, description, keywords, textDomain, attributes, editorScript, script, default */
 /***/ (function(module) {
 
-module.exports = {"name":"calderajs/form","title":"Form Block","category":"common","icon":"feedback","description":"Shows warning, error or success notices  ...","keywords":["alert","message"],"textDomain":"my-plugin","attributes":{"formId":{"type":"string"}},"editorScript":"build/form-editor.js","script":"build/form-client.js"};
+module.exports = {"name":"calderajs/form","title":"Form Block","category":"common","icon":"feedback","description":"Shows warning, error or success notices  ...","keywords":["alert","message"],"textDomain":"my-plugin","attributes":{"formId":{"type":"string","source":"attribute","selector":".cf-gp","attribute":"data-form"}},"editorScript":"build/form-editor.js","script":"build/form-client.js"};
 
 /***/ }),
 
@@ -10667,7 +10676,7 @@ function previouslyCompared(a, b) {
 /*!*****************************************************!*\
   !*** ./node_modules/apollo-boost/lib/bundle.esm.js ***!
   \*****************************************************/
-/*! exports provided: ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument, HttpLink, gql, default */
+/*! exports provided: HttpLink, gql, default, ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

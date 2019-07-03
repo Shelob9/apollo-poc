@@ -34,8 +34,13 @@ const Editor = ({ attributes, setAttributes, className }) => {
 const edit = (props) => {
 	return <Editor {...props} />;
 };
-const save = () => {
-	return null;
+const save = ({ attributes, className }) => {
+	const { formId } = attributes;
+	return (
+		<div className={className}>
+			<div data-form={formId} className={'cf-gp'} />
+		</div>
+	);
 };
 const blockConfig = require('./formBlock.json');
 const {

@@ -42,6 +42,7 @@ export default function Single({
 	loadingIndicator,
 	errorDisplay,
 	render,
+	notFoundDisplay,
 }) {
 	return (
 		<Query query={GET_FORM} variables={{ formId }}>
@@ -71,7 +72,7 @@ Single.defaultProps = {
 		return <p>Error :( </p>;
 	},
 	notFoundDisplay: () => {
-		return <p>No Forms Found</p>;
+		return <p>Form Not Found</p>;
 	},
 	render: ({ form }) => {
 		const { _id, name, ID } = form;
