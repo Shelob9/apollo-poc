@@ -1,1 +1,1 @@
-["wp-polyfill"]
+["react","react-dom","wp-element","wp-hooks","wp-polyfill"]

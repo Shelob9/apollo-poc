@@ -34,7 +34,6 @@ export default function MailChimpForm({ listId }) {
 				if (loading) return <p>Loading...</p>;
 				if (error) return <p>Error :(</p>;
 				const { listFields, listCategories, listInterests } = data;
-				console.log(listFields);
 				const form = {};
 				return <div>Forms</div>;
 			}}

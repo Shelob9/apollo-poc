@@ -376,16 +376,15 @@ FormList.defaultProps = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Preview; });
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/@babel/runtime/helpers/objectSpread.js");
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _calderajs_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @calderajs/forms */ "./node_modules/@calderajs/forms/dist/index.js");
-/* harmony import */ var _calderajs_forms__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_calderajs_forms__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _calderajs_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @calderajs/forms */ "./node_modules/@calderajs/forms/dist/index.js");
+/* harmony import */ var _calderajs_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_calderajs_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks */ "./Components/Forms/hooks.js");
 
 
 
@@ -396,51 +395,19 @@ function Preview(_ref) {
       loadingIndicator = _ref.loadingIndicator,
       onSubmit = _ref.onSubmit;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(form),
-      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
-      theForm = _useState2[0],
-      updateTheForm = _useState2[1];
-  /**
-   * Prepare form for preview
-   */
-
-
-  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
-    //Make sure fieldId is set as @calderajs/forms wants it to be
-    var fields = form.fields.map(function (field) {
-      var fieldId = field.hasOwnProperty('fieldId') ? field.fieldId : field._id;
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, field, {
-        fieldId: fieldId
-      });
-    }); //If rows are not provided, add one row per field
-
-    var rows = !form.hasOwnProperty('rows') ? rows = fields.map(function (field) {
-      var fieldId = field.fieldId;
-      return {
-        rowId: "r-".concat(fieldId),
-        columns: [{
-          fields: [fieldId],
-          width: '12',
-          columnId: "c-".concat(fieldId)
-        }]
-      };
-    }) : form.rows; //Update the form so it has rows and fields
-
-    updateTheForm(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, theForm, {
-      fields: fields,
-      rows: rows
-    }));
-  }, [form, updateTheForm]);
+  var _usePreviewableForm = Object(_hooks__WEBPACK_IMPORTED_MODULE_4__["usePreviewableForm"])(form),
+      _usePreviewableForm2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_usePreviewableForm, 1),
+      theForm = _usePreviewableForm2[0];
 
   if (!theForm.fields || !theForm.rows) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, loadingIndicator);
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(react__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, loadingIndicator);
   }
 
   var submitHandler = function submitHandler(values, actions) {
     onSubmit(values); //actions.setSubmitting(false);
   };
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_calderajs_forms__WEBPACK_IMPORTED_MODULE_4__["CalderaForm"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_calderajs_forms__WEBPACK_IMPORTED_MODULE_3__["CalderaForm"], {
     form: theForm //form config
     ,
     onSubmit: submitHandler
@@ -448,7 +415,7 @@ function Preview(_ref) {
 }
 Preview.defaultProps = {
   loadingIndicator: function loadingIndicator() {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", null, "Loading Form");
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, "Loading Form");
   }
 };
 
@@ -575,7 +542,6 @@ function Submittable(_ref) {
     formId: formId,
     render: function render(_ref2) {
       var form = _ref2.form;
-      console.log(formId, form);
       return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Entry_CreateEntry__WEBPACK_IMPORTED_MODULE_4__["default"], {
         form: form,
         formId: form._id,
@@ -599,6 +565,69 @@ function Submittable(_ref) {
     }
   });
 }
+
+/***/ }),
+
+/***/ "./Components/Forms/hooks.js":
+/*!***********************************!*\
+  !*** ./Components/Forms/hooks.js ***!
+  \***********************************/
+/*! exports provided: usePreviewableForm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usePreviewableForm", function() { return usePreviewableForm; });
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/@babel/runtime/helpers/objectSpread.js");
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+function usePreviewableForm(form) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(form),
+      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
+      theForm = _useState2[0],
+      updateTheForm = _useState2[1];
+  /**
+   * Prepare form for preview
+   */
+
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    //Make sure fieldId is set as @calderajs/forms wants it to be
+    var fields = form.fields.map(function (field) {
+      var fieldId = field.hasOwnProperty('fieldId') ? field.fieldId : field._id;
+      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, field, {
+        fieldId: fieldId
+      });
+    }); //If rows are not provided, add one row per field
+
+    var rows = !form.hasOwnProperty('rows') ? rows = fields.map(function (field) {
+      var fieldId = field.fieldId;
+      return {
+        rowId: "r-".concat(fieldId),
+        columns: [{
+          fields: [fieldId],
+          width: '12',
+          columnId: "c-".concat(fieldId)
+        }]
+      };
+    }) : form.rows; //Update the form so it has rows and fields
+
+    updateTheForm(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, theForm, {
+      fields: fields,
+      rows: rows
+    }));
+  }, [form, updateTheForm]);
+  return [theForm, updateTheForm];
+}
+
+
 
 /***/ }),
 
@@ -701,6 +730,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_SimpleFormChooser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/SimpleFormChooser */ "./Components/SimpleFormChooser.js");
 /* harmony import */ var _Components_Forms_Submittable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/Forms/Submittable */ "./Components/Forms/Submittable.js");
 /* harmony import */ var _CalderaQLProvider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CalderaQLProvider */ "./blocks/CalderaQLProvider.js");
+/* harmony import */ var _Components_Forms_hooks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Components/Forms/hooks */ "./Components/Forms/hooks.js");
+/* harmony import */ var _Components_Forms_Single__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Components/Forms/Single */ "./Components/Forms/Single.js");
+
+
 
 
 
@@ -731,10 +764,18 @@ var Editor = function Editor(_ref) {
     className: className
   })));
 };
+/**
+ * Edit callback for block
+ */
+
 
 var edit = function edit(props) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Editor, props);
 };
+/**
+ * Save callback for block
+ */
+
 
 var save = function save(_ref2) {
   var attributes = _ref2.attributes,
@@ -778,7 +819,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])(name
 /*! exports provided: name, title, category, icon, description, keywords, textDomain, attributes, editorScript, script, default */
 /***/ (function(module) {
 
-module.exports = {"name":"calderajs/form","title":"Form Block","category":"common","icon":"feedback","description":"Shows warning, error or success notices  ...","keywords":["alert","message"],"textDomain":"my-plugin","attributes":{"formId":{"type":"string","source":"attribute","selector":".cf-gp","attribute":"data-form"}},"editorScript":"build/form-editor.js","script":"build/form-client.js"};
+module.exports = {"name":"calderajs/form","title":"Form Block","category":"common","icon":"feedback","description":"Caldera Forms Submitted To Apollo Server","keywords":["alert","message"],"textDomain":"my-plugin","attributes":{"formId":{"type":"string","source":"attribute","selector":".cf-gp","attribute":"data-form"}},"editorScript":"build/form-editor.js","script":"build/form-client.js"};
 
 /***/ }),
 
@@ -10676,7 +10717,7 @@ function previouslyCompared(a, b) {
 /*!*****************************************************!*\
   !*** ./node_modules/apollo-boost/lib/bundle.esm.js ***!
   \*****************************************************/
-/*! exports provided: HttpLink, gql, default, ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument */
+/*! exports provided: ApolloClient, ApolloError, FetchType, NetworkStatus, ObservableQuery, isApolloError, Observable, getOperationName, ApolloLink, concat, createOperation, empty, execute, from, fromError, fromPromise, makePromise, split, toPromise, HeuristicFragmentMatcher, InMemoryCache, IntrospectionFragmentMatcher, ObjectCache, StoreReader, StoreWriter, WriteError, assertIdValue, defaultDataIdFromObject, defaultNormalizedCacheFactory, enhanceErrorWithDocument, HttpLink, gql, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

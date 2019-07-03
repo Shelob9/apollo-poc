@@ -3,7 +3,7 @@
     "title": "Form Block",
     "category": "common",
     "icon": "feedback",
-    "description": "Shows warning, error or success notices  ...",
+    "description": "Caldera Forms Submitted To Apollo Server",
     "keywords": [
         "alert",
         "message"

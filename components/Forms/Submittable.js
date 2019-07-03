@@ -8,7 +8,6 @@ export default function Submittable({ formId, renderEntry, className }) {
 		<Single
 			formId={formId}
 			render={({ form }) => {
-				console.log(formId, form);
 				return (
 					<CreateEntry
 						form={form}

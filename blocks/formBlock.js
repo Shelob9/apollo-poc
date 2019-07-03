@@ -5,6 +5,9 @@ import React, { Fragment } from 'react';
 import { SimpleFormChooser } from '../Components/SimpleFormChooser';
 import Submittable from '../Components/Forms/Submittable';
 import { CalderaQLProvider } from './CalderaQLProvider';
+import { usePreviewableForm } from '../Components/Forms/hooks';
+
+import Single from '../Components/Forms/Single';
 
 const Editor = ({ attributes, setAttributes, className }) => {
 	const { formId } = attributes;
@@ -31,17 +34,25 @@ const Editor = ({ attributes, setAttributes, className }) => {
 	);
 };
 
+/**
+ * Edit callback for block
+ */
 const edit = (props) => {
 	return <Editor {...props} />;
 };
+
+/**
+ * Save callback for block
+ */
 const save = ({ attributes, className }) => {
 	const { formId } = attributes;
 	return (
 		<div className={className}>
-			<div data-form={formId} className={'cf-gp'} />
+			<div data-form={formId} className={'cf-gp'}></div>
 		</div>
 	);
 };
+
 const blockConfig = require('./formBlock.json');
 const {
 	title,
